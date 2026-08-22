@@ -1,0 +1,26 @@
+{
+    "name": "nld-erp-playwright",
+    "version": "1.0.0",
+    "description": "Playwright + TypeScript POM automation framework for the NLD ERP application",
+    "private": true,
+    "scripts": {
+        "test": "playwright test",
+        "test:headed": "playwright test --headed",
+        "test:login": "playwright test tests/Login.spec.ts",
+        "test:debug": "playwright test --debug",
+        "test:ui": "playwright test --ui",
+        "report": "playwright show-report"
+    },
+    "keywords": [
+        "playwright",
+        "typescript",
+        "pom",
+        "automation"
+    ],
+    "devDependencies": {
+        "@playwright/test": "^1.49.0",
+        "@types/node": "^22.10.0",
+        "dotenv": "^16.4.7",
+        "typescript": "^5.7.2"
+    }
+}

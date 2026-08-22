@@ -1,0 +1,13 @@
+{
+    "newCustomer": {
+        "businessName": "Test Business",
+        "firstName": "Test",
+        "lastName": "Customer",
+        "mobile": "9876543210",
+        "addressSearchText": "Dickerman Street Rockford IL",
+        "expectedAddressSuggestion": "Dickerman Street",
+        "paymentTerm": "Net 30",
+        "emailPrefix": "qa.customer",
+        "emailDomain": "example.com"
+    }
+}

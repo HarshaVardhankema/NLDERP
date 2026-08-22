@@ -1,0 +1,9 @@
+# Normalise to LF in the repo and in the working tree, matching
+# .editorconfig (end_of_line = lf) and .vscode/settings.json (files.eol).
+# Without this, Git checks out CRLF on Windows and every file reads as modified.
+* text=auto eol=lf
+
+# Playwright artifacts, should they ever be committed deliberately.
+*.png binary
+*.webm binary
+*.zip binary

@@ -1,0 +1,9 @@
+{
+    "newUser": {
+        "firstName": "Test",
+        "lastName": "User",
+        "role": "Sales agent",
+        "emailPrefix": "qa.automation",
+        "emailDomain": "example.com"
+    }
+}

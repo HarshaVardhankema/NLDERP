@@ -1,0 +1,21 @@
+{
+    // This project uses a deliberate hand-maintained code style that Prettier
+    // cannot reproduce: a blank line after each opening brace, and no semicolon
+    // on the Manager getter returns. Prettier strips both. Formatting is manual
+    // here on purpose -- see .claude/skills/new-page-object/SKILL.md.
+    "editor.formatOnSave": false,
+    "prettier.enable": false,
+
+    // Indentation is fixed per folder, not guessed from file contents.
+    "editor.detectIndentation": false,
+    "editor.tabSize": 4,
+    "editor.insertSpaces": true,
+
+    "files.eol": "\n",
+    "files.trimTrailingWhitespace": true,
+    "files.insertFinalNewline": true,
+
+    // Playwright extension wiring.
+    "playwright.env": {},
+    "playwright.reuseBrowser": false
+}
