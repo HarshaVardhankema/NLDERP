@@ -1,0 +1,24 @@
+{
+    "newProduct": {
+        "namePrefix": "QA Automation Product",
+        "mlValue": "5",
+        "ctValue": "1",
+        "mlLocationTax": "THCA",
+        "brand": "NORTH",
+        "category": "CARTS",
+        "excTax": "10",
+        "productType": "Single"
+    },
+    "variantProduct": {
+        "namePrefix": "QA Automation Variant Product",
+        "mlValue": "5",
+        "ctValue": "1",
+        "mlLocationTax": "THCA",
+        "brand": "NORTH",
+        "category": "CARTS",
+        "excTax": "10",
+        "productType": "Variable",
+        "variationTemplate": "Flavor",
+        "flavorCount": 2
+    }
+}

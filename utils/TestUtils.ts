@@ -46,3 +46,15 @@ export function uniqueEmail(prefix: string, domain: string): string {
 
     return `${prefix}.${Date.now()}@${domain}`;
 }
+
+/**
+ * Builds a unique name.
+ *
+ * The product list runs to 400+ records over 25-row pages, so a create test has
+ * to search for the record it just made. That search only narrows to a single
+ * row if the name is unique, which a fixed name stops being on the second run.
+ */
+export function uniqueName(prefix: string): string {
+
+    return `${prefix} ${Date.now()}`;
+}

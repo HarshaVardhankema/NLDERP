@@ -14,5 +14,5 @@
         "types": ["node"]
     },
     "include": ["**/*.ts"],
-    "exclude": ["node_modules", "test-results", "playwright-report"]
+    "exclude": ["node_modules", "test-results", "playwright-report", "_app-source"]
 }

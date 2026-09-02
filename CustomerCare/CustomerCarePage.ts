@@ -7,7 +7,7 @@ export class CustomerCarePage {
     customerCareMenu: Locator;
     customersMenuItem: Locator;
     customerManagementHeading: Locator;
-    customersTable: Locator;
+    customersTableHeader: Locator;
     addButton: Locator;
     searchBox: Locator;
     customerRows: Locator;
@@ -42,8 +42,14 @@ export class CustomerCarePage {
         // is the heading that is actually exposed.
         this.customerManagementHeading = page.getByRole("heading", { name: "Customer Management" });
 
-        // DataTables marks the list as role="grid", not role="table".
-        this.customersTable = page.getByRole("grid");
+        // DataTables rewrites the list's role from "table" to "grid", but only
+        // once its JS has initialised. Asserting on role="grid" therefore races
+        // the init and fails on a slow load while the markup is still a plain
+        // table. A column header is present in both states, so it proves the
+        // list rendered without depending on DataTables having taken over.
+        // The name is a regex because DataTables appends "activate to sort
+        // column ..." to each sortable header after it initialises.
+        this.customersTableHeader = page.getByRole("columnheader", { name: /^Business Name/ });
 
         // The icon inside the anchor contributes a glyph to the accessible name,
         // so an exact "Add" match returns nothing.
@@ -103,7 +109,7 @@ export class CustomerCarePage {
         await this.page.waitForURL(/\/contacts\?type=customer/);
 
         await expect(this.customerManagementHeading).toBeVisible();
-        await expect(this.customersTable).toBeVisible();
+        await expect(this.customersTableHeader).toBeVisible();
         await expect(this.addButton).toBeVisible();
 
     }
