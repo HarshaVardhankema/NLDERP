@@ -6,8 +6,9 @@ export class UserManagementPage {
     userManagementMenu: Locator;
     usersMenuItem: Locator;
     usersHeading: Locator;
-    usersTable: Locator;
+    usersTableHeader: Locator;
     addButton: Locator;
+    searchBox: Locator;
     addUserHeading: Locator;
     firstName: Locator;
     lastName: Locator;
@@ -16,7 +17,6 @@ export class UserManagementPage {
     confirmPassword: Locator;
     roleDropdown: Locator;
     saveButton: Locator;
-    successMessage: Locator;
 
     constructor(page: Page) {
 
@@ -27,14 +27,20 @@ export class UserManagementPage {
 
         this.usersHeading = page.getByRole("heading", { name: "Users", exact: true });
 
-        // The users list is a DataTable, which sets role="grid" rather than
-        // role="table", so getByRole("table") finds nothing here.
-        this.usersTable = page.getByRole("grid");
+        // The users list is a DataTable, which swaps the table's role for "grid"
+        // when its JS initialises. Asserting on role="grid" races that init and
+        // breaks on a slow load, so this anchors on a column header instead --
+        // present both before and after DataTables takes over. The name is a
+        // regex because DataTables appends "activate to sort column ..." to each
+        // sortable header once initialised.
+        this.usersTableHeader = page.getByRole("columnheader", { name: /^Username/ });
 
         // The anchor renders a Font Awesome icon before the word "Add". The icon
         // glyph becomes part of the accessible name, so an exact "Add" match
         // returns zero elements and a regex is required.
         this.addButton = page.getByRole("link", { name: /Add/i });
+
+        this.searchBox = page.getByPlaceholder("Search users...");
 
         this.addUserHeading = page.getByRole("heading", { name: "Add user" });
 
@@ -58,8 +64,6 @@ export class UserManagementPage {
 
         this.saveButton = page.getByRole("button", { name: "Save" });
 
-        this.successMessage = page.getByText("User added successfully");
-
     }
 
     async openUserManagementMenu() {
@@ -78,7 +82,7 @@ export class UserManagementPage {
         await this.page.waitForURL(/\/users/);
 
         await expect(this.usersHeading).toBeVisible();
-        await expect(this.usersTable).toBeVisible();
+        await expect(this.usersTableHeader).toBeVisible();
         await expect(this.addButton).toBeVisible();
 
     }
@@ -134,7 +138,24 @@ export class UserManagementPage {
 
         await this.page.waitForURL(/\/users$/);
 
-        await expect(this.successMessage).toBeVisible();
+        // Deliberately no success-toast assertion. Saving POSTs to /users and
+        // returns a 302 back to the list, and that redirected page carries no
+        // flash message at all -- the list HTML before and after a create differs
+        // only in a cache-busting timestamp on app.js. Every toastr call on this
+        // page is AJAX-driven (delete, location switch), so a "User added
+        // successfully" toast is never rendered. The new grid row below is the
+        // durable evidence that the user was created.
+
+        // The list pages at 25 rows and every run adds a user, so the newest
+        // record sorts onto the last page and is not in the DOM at all. Searching
+        // by the unique email narrows the grid to just the new user, which also
+        // keeps the count assertion clear of leftovers from earlier runs.
+        // The page wires the box up as $('#users_search').on('keyup', ...), and
+        // fill() only dispatches "input", so filling alone leaves the grid
+        // unfiltered. Pressing a key afterwards raises the keyup the handler
+        // needs; End is used because it moves the caret without editing the value.
+        await this.searchBox.fill(email);
+        await this.searchBox.press("End");
 
         const newUserRow = this.page.getByRole("row").filter({ hasText: email });
 

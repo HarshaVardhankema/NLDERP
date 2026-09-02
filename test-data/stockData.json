@@ -1,0 +1,33 @@
+{
+    "modes": {
+        "single": "Single Product Stock Management",
+        "bulk": "Bulk Stock Update"
+    },
+    "operations": {
+        "addition": "Addition (Current + Entered)",
+        "subtraction": "Subtraction (Current - Entered)",
+        "reset": "Reset (Replace with Entered)"
+    },
+    "operationTypes": {
+        "addition": "addition",
+        "subtraction": "subtraction",
+        "reset": "reset"
+    },
+    "operationBanners": {
+        "addition": "Addition: Current Stock + Entered Quantity = New Stock",
+        "subtraction": "Subtraction: Current Stock - Entered Quantity = New Stock",
+        "reset": "Reset: Current Stock will be replaced with the Entered Quantity"
+    },
+    "product": {
+        "sku": "CAR1788361071CT",
+        "name": "QA Automation Product 1788361070809"
+    },
+    "quantities": {
+        "baseline": 50,
+        "addition": 10,
+        "subtraction": 5,
+        "reset": 25,
+        "beyondAvailable": 999999
+    },
+    "remarks": "Playwright automated stock adjustment"
+}

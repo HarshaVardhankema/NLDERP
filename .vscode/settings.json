@@ -17,5 +17,12 @@
 
     // Playwright extension wiring.
     "playwright.env": {},
-    "playwright.reuseBrowser": false
+    "playwright.reuseBrowser": false,
+
+    // Show the green run/debug arrows in the editor gutter next to every
+    // test() in tests/*.spec.ts, and make a single click run the test.
+    // These only ever appear in files Playwright discovers as tests -- page
+    // objects under a feature folder have no test() call, so no arrow.
+    "testing.gutterEnabled": true,
+    "testing.defaultGutterClickAction": "run"
 }
