@@ -58,3 +58,28 @@ export function uniqueName(prefix: string): string {
 
     return `${prefix} ${Date.now()}`;
 }
+
+/**
+ * Builds a unique 10-digit mobile number.
+ *
+ * The contact form rejects a mobile that already belongs to another contact, so
+ * a fixed number stops working on the second run. The timestamp supplies the
+ * last nine digits, which keeps the total at the ten the form expects.
+ */
+export function uniqueMobile(leadingDigit: string): string {
+
+    return `${leadingDigit}${String(Date.now()).slice(-9)}`;
+}
+
+/**
+ * Builds a unique document reference.
+ *
+ * Purchase orders and purchase receipts both let their Reference No be supplied
+ * rather than generated. Supplying a unique one is what lets a test find the
+ * record it just saved in a list that already holds hundreds of them, instead of
+ * assuming the newest row belongs to this run.
+ */
+export function uniqueReference(prefix: string): string {
+
+    return `${prefix}-${Date.now()}`;
+}

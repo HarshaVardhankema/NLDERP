@@ -1,0 +1,21 @@
+{
+    "newVendor": {
+        "businessName": "MEXCIO SMOKE SHOP",
+        "businessLocation": "No Limit Distro",
+        "firstName": "MEXICO",
+        "lastName": "SMOKE SHOP",
+        "mobileLeadingDigit": "9",
+        "emailPrefix": "mexcio.smoke",
+        "emailDomain": "gmail.com",
+        "addressSearch": "Dickerman street Rockford",
+        "addressMatch": "Dickerman Street",
+        "expectedCity": "Rockford"
+    },
+    "createdVendor": {
+        "supplierId": "V01348",
+        "businessName": "MEXCIO SMOKE SHOP",
+        "mobile": "9475987811",
+        "email": "mexcio.smoke.1788475987811@gmail.com",
+        "createdAt": "2026-09-03T22:53:15.571Z"
+    }
+}
