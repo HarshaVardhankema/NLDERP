@@ -1,0 +1,15 @@
+{
+    "product": {
+        "sku": "CARAPEXMUHA5CT",
+        "name": "APEX MUHA"
+    },
+    "orderQuantity": "20",
+    "referencePrefix": {
+        "purchaseOrder": "QA-PO",
+        "purchaseRequest": "QA-PR"
+    },
+    "statuses": {
+        "ordered": "Ordered",
+        "draft": "Draft"
+    }
+}
