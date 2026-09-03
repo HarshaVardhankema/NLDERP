@@ -3,6 +3,7 @@ import { SingleProductPage } from "./SingleProductPage";
 import { VariantProductPage } from "./VariantProductPage";
 import { EnhancedManageStockPage } from "./EnhancedManageStockPage";
 import { PrintLabelsPage } from "./PrintLabelsPage";
+import { InventoryTransferPage } from "./InventoryTransferPage";
 
 export class ProductsManager {
 
@@ -11,6 +12,7 @@ export class ProductsManager {
     VariantProductPage: VariantProductPage;
     EnhancedManageStockPage: EnhancedManageStockPage;
     PrintLabelsPage: PrintLabelsPage;
+    InventoryTransferPage: InventoryTransferPage;
 
     constructor(page: Page) {
 
@@ -19,6 +21,7 @@ export class ProductsManager {
         this.VariantProductPage = new VariantProductPage(this.page);
         this.EnhancedManageStockPage = new EnhancedManageStockPage(this.page);
         this.PrintLabelsPage = new PrintLabelsPage(this.page);
+        this.InventoryTransferPage = new InventoryTransferPage(this.page);
 
     }
 
@@ -36,5 +39,9 @@ export class ProductsManager {
 
     getPrintLabelsPage() {
         return this.PrintLabelsPage
+    }
+
+    getInventoryTransferPage() {
+        return this.InventoryTransferPage
     }
 }

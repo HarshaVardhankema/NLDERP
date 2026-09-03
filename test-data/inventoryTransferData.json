@@ -1,0 +1,17 @@
+{
+    "locations": {
+        "nldMark": "NLD",
+        "goHunterMark": "G",
+        "nldToGoHunter": "No Limit Distribution → GoHunter",
+        "goHunterToNld": "GoHunter → No Limit Distribution"
+    },
+    "transferProduct": {
+        "name": "APEX MUHA",
+        "sku": "CARAPEXMUHA5CT"
+    },
+    "poDraft": {
+        "vendorSearch": "MARS",
+        "vendor": "MARS WHOLESALER",
+        "quantity": "20"
+    }
+}
